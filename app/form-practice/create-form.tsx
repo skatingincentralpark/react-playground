@@ -21,7 +21,7 @@ export default function CreateForm() {
 
   const onSubmit = (values: FormInput) => {
     const newImageUrls = values.images.newImages.map(
-      (image) => `https://cloudfront.com/new-${image.file.name}`
+      (image) => `https://cloudfront.com/new-${image.file.name}`,
     );
 
     const newImagesPayload = newImageUrls.map((url, i) => ({
@@ -35,7 +35,7 @@ export default function CreateForm() {
         images: {
           newImages: newImagesPayload,
         },
-      })
+      }),
     );
   };
 
@@ -48,16 +48,16 @@ export default function CreateForm() {
 
   const newImageFeaturedCount = images.newImages.reduce(
     (count, image) => (image.featured ? count + 1 : count),
-    0
+    0,
   );
 
   const totalFeaturedCount = newImageFeaturedCount;
 
   return (
-    <div className="max-w-4xl border p-4 m-4 border-orange-500 space-y-4">
+    <div className="m-4 max-w-4xl space-y-4 border border-orange-500 p-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border border-orange-500 p-4 flex flex-col gap-2"
+        className="flex flex-col gap-2 border border-orange-500 p-4"
       >
         <h1>Create Form</h1>
         <Controller
@@ -72,12 +72,12 @@ export default function CreateForm() {
 
         <div className="flex flex-col gap-2"></div>
 
-        <button className="text-white bg-orange-500 border px-2" type="submit">
+        <button className="border bg-orange-500 px-2 text-white" type="submit">
           Submit
         </button>
       </form>
 
-      <div className="border border-orange-500 p-4 space-y-2">
+      <div className="space-y-2 border border-orange-500 p-4">
         <h2>Errors:</h2>
         <ul className="text-red-500">
           {nameErrorMessage && <li>name: {nameErrorMessage}</li>}
