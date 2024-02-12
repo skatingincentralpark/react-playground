@@ -74,3 +74,9 @@ import '@testing-library/jest-dom/extend-expect'
 const submitButton = screen.queryByText('submit')
 expect(submitButton).not.toBeInTheDocument()
 ```
+
+## Resources
+[Common mistakes with react testing library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
+[Testing Library Types of queries](https://testing-library.com/docs/queries/about/)
+[Vitest Test API Reference (e.g. test.only, test.todo)](https://vitest.dev/api/#test)
+[Vitest Expect API Reference (e.g. toHaveLength, toBe)](https://vitest.dev/api/expect.html)
