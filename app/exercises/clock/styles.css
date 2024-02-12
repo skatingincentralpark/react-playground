@@ -2,29 +2,24 @@ body {
     font-family: sans-serif;
 }
 
-.wrapper {
+main {
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .clock {
-    display: block;
-    flex-shrink: 0;
-    position: relative;
+    background-color: wheat;
+    border: 1px solid black;
+    border-radius: 50%;
     width: var(--size);
     height: var(--size);
-    border-radius: 100%;
-    border: 2px solid #ccc;
-    transform: rotate(180deg);
+    position: relative;
 }
 
-.clock-hand {
-    background-color: #ccc;
+.hand {
+    background-color: black;
     position: absolute;
     width: 1px;
     height: 50%;
     left: 50%;
-    top: 50%;
-    transform-origin: top center;
+    transform-origin: bottom center;
 }

@@ -1,51 +1,23 @@
 "use client";
 import { useEffect, useState } from "react";
 
-function Hand({
-  height = 1,
-  width = 1,
-  angle,
-}: {
-  height?: number;
-  width?: number;
-  angle: number;
-}) {
-  return (
-    <div
-      aria-hidden={true}
-      className="clock-hand"
-      style={{
-        transform: `rotate(${angle}deg) scaleY(${height}) scaleX(${width})`,
-      }}
-    />
-  );
-}
-
 function useCurrentDate() {
   const [date, setDate] = useState(new Date());
 
-  // Kick off the timer.
   useEffect(() => {
-    const timer = window.setInterval(() => {
+    const interval = setInterval(() => {
       setDate(new Date());
     }, 100);
 
-    // Clear the timer upon unmount.
-    return () => {
-      window.clearInterval(timer);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return date;
 }
 
-function padTwoDigit(number: number) {
-  return number >= 10 ? String(number) : `0${number}`;
-}
-
 export default function Clock() {
   const date = useCurrentDate();
-  const hours = date.getHours() % 12;
+  const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
 
@@ -54,10 +26,10 @@ export default function Clock() {
   );
 }
 
-const FULL_ROTATION_DEGREES = 360;
+function padTwoDigit(number: number) {
+  return number >= 10 ? String(number) : `0${number}`;
+}
 
-// Separate out into a component that takes the time as a prop,
-// so as to make it easy to test the rendering for specific times.
 function ClockImpl({
   hours,
   minutes,
@@ -69,7 +41,9 @@ function ClockImpl({
   seconds: number;
   size: number;
 }) {
-  const secondsPercentage = seconds / 60;
+  const FULL_ROTATION_DEGREES = 360;
+
+  const secondsPercentage = seconds / 60; // 0.5
   // To have second-level precision in the minute hand angle.
   const minutesPercentage = (minutes + secondsPercentage) / 60;
   // To have minute-level precision in the hour hand angle.
@@ -79,21 +53,37 @@ function ClockImpl({
   const minutesAngle = minutesPercentage * FULL_ROTATION_DEGREES;
   const secondsAngle = secondsPercentage * FULL_ROTATION_DEGREES;
 
-  const dateTimeDisplay = `${padTwoDigit(
-    hours,
-  )}:${padTwoDigit(minutes)}:${padTwoDigit(seconds)}`;
+  const dateTimeDisplay = `${padTwoDigit(hours)}:${padTwoDigit(minutes)}:${padTwoDigit(seconds)}`;
 
   return (
     <time
+      style={{ ["--size" as string]: `${size}px` }}
       className="clock"
       dateTime={dateTimeDisplay}
-      style={{
-        ["--size" as string]: `${size}px`,
-      }}
     >
-      <Hand height={0.5} angle={hourAngle} width={3} />
-      <Hand height={0.9} angle={minutesAngle} width={2} />
-      <Hand height={0.8} angle={secondsAngle} />
+      <Hand angle={hourAngle} height={0.6} width={3} />
+      <Hand angle={minutesAngle} height={0.8} width={2} />
+      <Hand angle={secondsAngle} height={1} width={1} />
     </time>
+  );
+}
+
+function Hand({
+  angle,
+  height = 1,
+  width = 1,
+}: {
+  angle: number;
+  height?: number;
+  width?: number;
+}) {
+  return (
+    <div
+      aria-hidden={true}
+      className="hand"
+      style={{
+        transform: `rotate(${angle}deg) scaleY(${height}) scaleX(${width})`,
+      }}
+    />
   );
 }
