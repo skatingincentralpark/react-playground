@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+main {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  gap: 6px;
+  padding: 6px;
+  max-width: 400px;
+}
+
+.grid-item {
+  border: 1px solid black;
+  aspect-ratio: 1;
+}
