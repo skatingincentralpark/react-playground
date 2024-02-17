@@ -33,6 +33,11 @@ body {
   color: var(--white);
 }
 
+.like-button.pending {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .error {
   color: var(--red);
 }

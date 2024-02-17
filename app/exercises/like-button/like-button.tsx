@@ -19,7 +19,7 @@ export default function LikeButton({
       <button
         onClick={toggleLike}
         disabled={isPending}
-        className={["like-button", isLiked && "liked"]
+        className={["like-button", isLiked && "liked", isPending && "pending"]
           .filter(Boolean)
           .join(" ")}
       >
