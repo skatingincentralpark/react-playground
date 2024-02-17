@@ -52,27 +52,25 @@ export default function GridLights({
   }
 
   return (
-    <div>
-      <div
-        className="grid"
-        style={{
-          gridTemplateColumns: `repeat(${config[0].length}, 1fr)`,
-        }}
-      >
-        {config.flat().flatMap((value, index) => {
-          if (!value) return <span key={id + index} />;
+    <div
+      className="grid"
+      style={{
+        gridTemplateColumns: `repeat(${config[0].length}, 1fr)`,
+      }}
+    >
+      {config.flat().flatMap((value, index) => {
+        if (!value) return <span key={id + index} />;
 
-          return (
-            <Cell
-              label={`Cell ${index}`}
-              key={id + index}
-              isDisabled={clickedItems.includes(index) || deactivating}
-              onClick={() => handleClick(index)}
-              filled={clickedItems.includes(index)}
-            />
-          );
-        })}
-      </div>
+        return (
+          <Cell
+            label={`Cell ${index}`}
+            key={id + index}
+            isDisabled={clickedItems.includes(index) || deactivating}
+            onClick={() => handleClick(index)}
+            filled={clickedItems.includes(index)}
+          />
+        );
+      })}
     </div>
   );
 }

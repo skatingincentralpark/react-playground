@@ -1,25 +1,21 @@
 body {
-    font-family: sans-serif;
-}
-
-main {
-    display: flex;
+  font-family: sans-serif;
 }
 
 .clock {
-    background-color: wheat;
-    border: 1px solid black;
-    border-radius: 50%;
-    width: var(--size);
-    height: var(--size);
-    position: relative;
+  background-color: wheat;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: var(--size);
+  height: var(--size);
+  position: relative;
 }
 
 .hand {
-    background-color: black;
-    position: absolute;
-    width: 1px;
-    height: 50%;
-    left: 50%;
-    transform-origin: bottom center;
+  background-color: black;
+  position: absolute;
+  width: 1px;
+  height: 50%;
+  left: 50%;
+  transform-origin: bottom center;
 }

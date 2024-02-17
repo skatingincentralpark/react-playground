@@ -1,24 +1,23 @@
 main {
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 600px;
 }
 .tabs-wrapper {
-    max-width: 600px;
-    border: 1px solid black;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  max-width: 600px;
+  border: 1px solid black;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 button {
-    background-color: #eee;
-    border: 1px solid black;
-    padding: 4px;
+  background-color: #eee;
+  border: 1px solid black;
+  padding: 4px;
 }
 .tabs-wrapper button.active {
-    background-color: rebeccapurple;
-    color: white;
+  background-color: rebeccapurple;
+  color: white;
 }

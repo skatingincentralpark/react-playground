@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { readdirSync } from "fs";
 import Link from "next/link";
-import Navigation from "../components/navigation";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,20 +24,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header>
-          <Navigation>
-            <ul className="flex gap-2">
+        <header className="flex gap-2 px-2 py-1">
+          <Link href="/" className="underline">
+            Home
+          </Link>
+          <nav>
+            <ul>
               {pages.map((page) => {
                 return (
-                  <li key={page} className="border py-1 px-3 bg-white rounded">
+                  <li key={page} className="underline capitalize">
                     <Link href={`/${page}`}>{page}</Link>
                   </li>
                 );
               })}
             </ul>
-          </Navigation>
+          </nav>
         </header>
-        {children}
+        <div>{children}</div>
       </body>
     </html>
   );

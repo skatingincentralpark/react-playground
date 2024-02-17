@@ -1,6 +1,5 @@
 import { readdirSync } from "fs";
 import Link from "next/link";
-import Navigation from "../../components/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const pages = readdirSync("./app/exercises", {
@@ -13,18 +12,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Navigation>
-        <ul className="flex gap-2">
+      <nav className="px-2">
+        <ul className="flex gap-2 flex-wrap">
           {pages.map((page) => {
+            const readable = page.replace(/-/g, " ");
+
             return (
-              <li key={page} className="border py-1 px-3 bg-white rounded">
-                <Link href={`/exercises/${page}`}>{page}</Link>
+              <li key={page} className="underline capitalize">
+                <Link href={`/exercises/${page}`}>{readable}</Link>
               </li>
             );
           })}
         </ul>
-      </Navigation>
-      {children}
+      </nav>
+      <main className="p-2 pt-8">{children}</main>
     </>
   );
 }

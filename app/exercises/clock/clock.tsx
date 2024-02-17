@@ -53,18 +53,22 @@ function ClockImpl({
   const minutesAngle = minutesPercentage * FULL_ROTATION_DEGREES;
   const secondsAngle = secondsPercentage * FULL_ROTATION_DEGREES;
 
-  const dateTimeDisplay = `${padTwoDigit(hours)}:${padTwoDigit(minutes)}:${padTwoDigit(seconds)}`;
+  const dateTimeDisplay = `${padTwoDigit(hours)}:${padTwoDigit(
+    minutes
+  )}:${padTwoDigit(seconds)}`;
 
   return (
-    <time
-      style={{ ["--size" as string]: `${size}px` }}
-      className="clock"
-      dateTime={dateTimeDisplay}
-    >
-      <Hand angle={hourAngle} height={0.6} width={3} />
-      <Hand angle={minutesAngle} height={0.8} width={2} />
-      <Hand angle={secondsAngle} height={1} width={1} />
-    </time>
+    <div className="flex">
+      <time
+        style={{ ["--size" as string]: `${size}px` }}
+        className="clock"
+        dateTime={dateTimeDisplay}
+      >
+        <Hand angle={hourAngle} height={0.6} width={3} />
+        <Hand angle={minutesAngle} height={0.8} width={2} />
+        <Hand angle={secondsAngle} height={1} width={1} />
+      </time>
+    </div>
   );
 }
 
