@@ -1,0 +1,38 @@
+body {
+  font-family: sans-serif;
+
+  --white: #fff;
+  --red: #f00;
+  --gray: #888;
+}
+
+.like-button {
+  all: unset;
+
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 999px;
+
+  border: 3px solid var(--gray);
+  color: var(--gray);
+}
+
+.like-button:hover {
+  border: 3px solid var(--red);
+  background-color: var(--white);
+  color: var(--red);
+}
+
+.like-button.liked {
+  border: 3px solid var(--red);
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.error {
+  color: var(--red);
+}
