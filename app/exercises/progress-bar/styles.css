@@ -3,10 +3,16 @@ body {
 }
 
 button {
-  padding: 10px 20px;
+  padding: 4px 12px;
   font-size: 16px;
+  border-radius: 4px;
   cursor: pointer;
-  background-color: lightgray;
+  background-color: rgb(236, 236, 236);
+  border: 1px solid rgb(204, 204, 204);
+}
+
+button:active {
+  background-color: rgb(204, 204, 204);
 }
 
 .progess-bar {
@@ -19,13 +25,5 @@ button {
 .bar-contents {
   height: 100%;
   background-color: orange;
-  transform: scaleX(0);
-  transition-property: transform;
-  transition-duration: var(--time);
   transform-origin: left center;
-  transition-timing-function: linear;
-}
-
-.bar-contents--filled {
-  transform: scaleX(1);
 }
