@@ -3,7 +3,7 @@ import "./styles.css";
 
 export default function Page() {
   return (
-    <main>
+    <div className="flex flex-col max-w-screen-sm gap-4">
       <button>Focusable Element</button>
       <Tabs
         items={[
@@ -28,6 +28,6 @@ export default function Page() {
         ]}
       />
       <button>Focusable Element</button>
-    </main>
+    </div>
   );
 }
