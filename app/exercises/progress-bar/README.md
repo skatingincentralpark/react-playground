@@ -1,6 +1,8 @@
 ## Notes
 
 - `onTransitionEnd`: Awesome event that is fired when a CSS transition has completed.
+- Be careful with useEffect and dependencies. The deps determine what updated values you have within the scope of the effect. In some cases, a setState's callback argument allows you to access the latest value for that specific state.
+- With small enough intervals, `setInterval` can create a smooth animation - below 16ms for a 60fps experience. (need to look into this algorithm a bit...)
 
 ## Test cases
 

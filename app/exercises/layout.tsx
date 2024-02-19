@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           })}
         </ul>
       </nav>
-      <main className="p-2 pt-8">{children}</main>
+      <main className="p-2 pt-8 w-full">{children}</main>
     </>
   );
 }

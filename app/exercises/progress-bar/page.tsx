@@ -11,7 +11,6 @@ function ProgressBar({
   ready: boolean;
 }) {
   const [progress, setProgress] = useState(0);
-  const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (!ready) return;
@@ -20,6 +19,7 @@ function ProgressBar({
       setProgress((p) => {
         if (p >= 100) {
           clearInterval(interval);
+
           return 100;
         }
 
@@ -27,10 +27,10 @@ function ProgressBar({
       });
     }, 10);
 
-    setTimerId(interval);
-
-    return () => clearInterval(interval);
-  }, [ready]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [ready, onCompleted]);
 
   useEffect(() => {
     if (progress >= 100) {
@@ -44,9 +44,7 @@ function ProgressBar({
         className={["bar-contents"].filter(Boolean).join(" ")}
         style={{ transform: `scaleX(${progress / 100})` }}
       />
-      <div>
-        <span>{progress}%</span>
-      </div>
+      <div className="progress-label">{progress}%</div>
     </div>
   );
 }
@@ -70,6 +68,10 @@ export default function Page() {
         <button onClick={() => setPaused((p) => !p)}>
           {paused ? "Resume" : "Pause"}
         </button>
+        <div className="info-label">
+          Completed: {completed} / {bars}
+        </div>
+        <div className="info-label">Max bars at once: {CONCURRENCY_COUNT}</div>
       </div>
       <div className="flex flex-col gap-2">
         {Array(bars)
