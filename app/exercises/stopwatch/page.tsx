@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./styles.css";
 
 function pad(num: number) {
@@ -9,22 +9,17 @@ function pad(num: number) {
 
 export default function Page() {
   const [timeElapsed, setTimeElapsed] = useState(0);
-  const [prevTimeElapsed, setPrevTimeElapsed] = useState(0);
   const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
+  const lastTickTime = useRef<number>(0);
 
   function start() {
-    const startedAt = Date.now();
+    lastTickTime.current = Date.now();
 
     const interval = setInterval(() => {
-      const currTime = Date.now();
-
-      setTimeElapsed(() => {
-        if (prevTimeElapsed) {
-          return prevTimeElapsed + (currTime - startedAt);
-        }
-
-        return currTime - startedAt;
-      });
+      const now = Date.now();
+      const delta = now - lastTickTime.current;
+      setTimeElapsed((t) => t + delta);
+      lastTickTime.current = now;
     }, 1);
 
     setTimer(interval);
@@ -33,13 +28,11 @@ export default function Page() {
   function pause() {
     timer && clearInterval(timer);
     setTimer(null);
-    setPrevTimeElapsed(timeElapsed);
   }
 
   function reset() {
     timer && clearInterval(timer);
     setTimer(null);
-    setPrevTimeElapsed(0);
     setTimeElapsed(0);
   }
 
