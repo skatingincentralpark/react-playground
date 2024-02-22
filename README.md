@@ -4,9 +4,9 @@
 
 Exploration of testing, accessibility, design patterns (build components in a way that makes them easy to test) and best practices.
 
-## Completed exercises
+## Exercises
 
-Separate READMEs for different exercises:
+Separate READMEs for different exercises, click on any to have a read:
 
 - [Clock](https://github.com/skatingincentralpark/react-playground/tree/main/app/exercises/clock)
 - [Tabs](https://github.com/skatingincentralpark/react-playground/tree/main/app/exercises/tabs)
@@ -16,6 +16,7 @@ Separate READMEs for different exercises:
 - [Progress Bar](https://github.com/skatingincentralpark/react-playground/tree/main/app/exercises/progress-bar)
 - [Stop Watch](https://github.com/skatingincentralpark/react-playground/tree/main/app/exercises/stopwatch)
 - [useImperativeHandle](https://github.com/skatingincentralpark/react-playground/tree/main/app/exercises/use-imperative-handle)
+- [Bar Graph](https://github.com/skatingincentralpark/react-playground/tree/main/app/exercises/bar-graph)
 
 ## Me
 
