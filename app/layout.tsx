@@ -29,7 +29,7 @@ export default function RootLayout({
             Home
           </Link>
           <nav>
-            <ul>
+            <ul className="flex gap-2">
               {pages.map((page) => {
                 return (
                   <li key={page} className="underline capitalize">
@@ -37,6 +37,16 @@ export default function RootLayout({
                   </li>
                 );
               })}
+              <li>
+                <a
+                  href="https://github.com/skatingincentralpark/react-playground"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Github
+                </a>
+              </li>
             </ul>
           </nav>
         </header>

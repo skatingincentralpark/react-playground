@@ -1,0 +1,63 @@
+.bar-graph-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.layout {
+  --gap: 10px;
+  padding-top: var(--gap);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  height: var(--height);
+  overflow-x: scroll;
+}
+
+.bar-graph {
+  background-color: rgb(255, 229, 181);
+  border: 1px solid orange;
+  height: 100%;
+  width: 100%;
+  column-gap: var(--gap);
+  padding: 0 var(--gap);
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  background-color: orange;
+  width: 100%;
+  height: var(--height);
+}
+
+.y-axis-labels {
+  --label-height: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  margin-top: calc(0px - (var(--label-height) / 2));
+  margin-bottom: calc(0px - (var(--label-height) / 2));
+  padding-right: var(--gap);
+}
+
+.y-axis-label {
+  height: var(--label-height);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.x-axis-labels {
+  grid-column: 2;
+  height: 100%;
+  text-align: center;
+  column-gap: var(--gap);
+  padding: var(--gap) var(--gap) 0 var(--gap);
+  display: flex;
+  align-items: flex-start;
+}
+
+.x-axis-label {
+  width: 100%;
+}
